@@ -18,4 +18,5 @@ addons:
 
     
 script:
-  - make -j2   
+  #- make -j2
+  - sh travisci_build_coverity_scan.sh 
