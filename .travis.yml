@@ -1,21 +1,24 @@
 language: c
 compiler:
   - gcc
-
+  
 env:
   global:
-   # The next declration is the encrypted COVERITY_SCAN_TOKEN, created
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
    #   via the "travis encrypt" command using the project repo's public key
-   - secure: "Byb6e8tZLsrWVE1pkTXyuWDvEzkhtQKlqCE8NEM7AA9qqu+T4+RPWZhf+HnT/UVlxgF91rAnFV36UzFIEUaRWcPiN9EJXfLA/46RH80JTMO9lJWjpCzxs4rmpshEyKV3MktqIoQ4PYqAF/CPHwoKNsV+VNxpnNdDj6Ki8liq4rYcVS56Z4EiFuqFt0rGzRVxuC1MTZht2iXnljL2csYrRmEXHyFTQjM6AgWoLOuVbsNj4KQ65gJfI50+gUYfJ8NDvRiBcBeUCEdGGVa9HLy2xzH7zftyCq2FMa08uNAZKehoIV+ky3kHHweHeE9y+e88ihgJ2xhPSbsnskBy8LF9kln9KucFsLDNs1s+kE+gZmkt7fscNnvv4iQjFHkxwG9Rbg4vER+kYMjCmKVCXd5hPzl26jlo0IOPKbrOPZCHqFM8MFXGVdvzbp3KpMguoxnapp/lQO9GqHtGrh99nGBdHvVBiXdajFFq2UoCjNb28dH0As+DwoCdME7cOg4QMF5xi2c9GBipaxLNOUuVYS9LYJRZph2ZjH9jPlJIZIRCKvvXBoYAaBMj+QO0MXaEcKx1ke1OMMSpaFzaDZ43KB5bRtrj8TXEObCuQ56Dxzr9aHK+Y6qrzBAwnSnayqUcy0GY2XAxRg8rDYyHGIXOYwzo5aA6EdnN/MEwVac1qRDHibQ="
+   - secure: "XQeBhMax7rGxEGLdgY0d3oe4S4tIbm2/foHx6T2brfUZ457P8O7jPRcr1HViaHI5cWGnFSsWury2vtjBE6OviS7CogiY2IUBJM7lYrQ+qe2kmDKw3NS4fhimBtkIbOs4F7ro+KRWBH703kIiykwxp61TtBdOcltMwuH83iDeYrHqQTPRIS3iva+ivCmWqmpOYoBoq5xrYfvW0oSdgTvMgS5iMneeBxJwlfblUosLdaXsII/vRCVtWRzBy7htUqhK967PZQTzuffWyNo1R1xNZLK2fJL9i21qlTkvHg+Cc9GaaM1MNXza/IztvBXRXu3JLU97u66J6JDNF9T5OvHXM5WJGHMS4SgAZUuv8Q1u5u/6uASzpiIMHu0uov7y4V8ordyof8yxlvfJwsF1af5OyABxsVGPp0QuRVAO8z89viI99twQzb2YW9kM/qNOnX9p9Ufu8l8qRInf1AI7x3AdN4GlEbgcXXlVGqBw3yqZMBPu+kLXVspukbwWbgiyx8dIogqvjzKnHSQpCvwSfb7OFsOYjWYNhMFt6D0nFCOe51Ip+HQzusRv///TMFQYpb497E4hPm5cfPF+1rrqKUFQANK5Wq9HXyshyTv+5LSYeBQeQ/tzNn/ZamBfGqLRT+wllP8LRgopEd+rsUTdq2BSC6RLlTKMCjzIcwtc88XNZDc="
+
+before_install:
+      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
 addons:
   coverity_scan:
     project:
       name: "liuchao412/CoverityTravisScan"
-      description: "Your project description here"
-    notification_email: liuchao412@foxmail.com
-    build_command: "make -j4"
+      description: "Build submitted via Travis CI"
+    notification_email: liuchao412@gmail.com
+    build_command_prepend: "./configure; make clean"
+    build_command:   "make -j 4"
     branch_pattern: master
-
-    
 script:
   - make -j2
