@@ -1,7 +1,7 @@
 language: c
 compiler:
   - gcc
-  
+
 env:
   global:
    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
@@ -16,7 +16,7 @@ addons:
     project:
       name: "liuchao412/CoverityTravisScan"
       description: "Build submitted via Travis CI"
-    notification_email: liuchao412@gmail.com
+    notification_email: liuchao412@foxmail.com
     build_command_prepend: "./configure; make clean"
     build_command:   "make -j 4"
     branch_pattern: master
