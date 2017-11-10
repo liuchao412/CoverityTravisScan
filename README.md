@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/liuchao412/CoverityTravisScan.svg?branch=master)](https://travis-ci.org/liuchao412/CoverityTravisScan)
 CoverityTravisScan
 ==================
 
