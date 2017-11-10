@@ -7,16 +7,6 @@ env:
    # The next declration is the encrypted COVERITY_SCAN_TOKEN, created
    #   via the "travis encrypt" command using the project repo's public key
    - secure: "Byb6e8tZLsrWVE1pkTXyuWDvEzkhtQKlqCE8NEM7AA9qqu+T4+RPWZhf+HnT/UVlxgF91rAnFV36UzFIEUaRWcPiN9EJXfLA/46RH80JTMO9lJWjpCzxs4rmpshEyKV3MktqIoQ4PYqAF/CPHwoKNsV+VNxpnNdDj6Ki8liq4rYcVS56Z4EiFuqFt0rGzRVxuC1MTZht2iXnljL2csYrRmEXHyFTQjM6AgWoLOuVbsNj4KQ65gJfI50+gUYfJ8NDvRiBcBeUCEdGGVa9HLy2xzH7zftyCq2FMa08uNAZKehoIV+ky3kHHweHeE9y+e88ihgJ2xhPSbsnskBy8LF9kln9KucFsLDNs1s+kE+gZmkt7fscNnvv4iQjFHkxwG9Rbg4vER+kYMjCmKVCXd5hPzl26jlo0IOPKbrOPZCHqFM8MFXGVdvzbp3KpMguoxnapp/lQO9GqHtGrh99nGBdHvVBiXdajFFq2UoCjNb28dH0As+DwoCdME7cOg4QMF5xi2c9GBipaxLNOUuVYS9LYJRZph2ZjH9jPlJIZIRCKvvXBoYAaBMj+QO0MXaEcKx1ke1OMMSpaFzaDZ43KB5bRtrj8TXEObCuQ56Dxzr9aHK+Y6qrzBAwnSnayqUcy0GY2XAxRg8rDYyHGIXOYwzo5aA6EdnN/MEwVac1qRDHibQ="
-addons:
-  coverity_scan:
-    project:
-      name: "liuchao412/CoverityTravisScan"
-      description: "Your project description here"
-    notification_email: liuchao412@foxmail.com
-    build_command: "make -j4"
-    branch_pattern: master
-
-    
 script:
   #- make -j2
-  - sh travisci_build_coverity_scan.sh 
+  - sh -x travisci_build_coverity_scan.sh 
